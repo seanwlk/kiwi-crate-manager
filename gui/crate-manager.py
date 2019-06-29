@@ -401,7 +401,7 @@ def steam_oAuthLogin(steamguard, token):
     return jar
 
 def steam_login():
-    # Steam login process by sumfun4WF
+    # Steam login process by sumfun4WF & Harmdhast
     if 'steam' in CREDS:
         # Relog using saved tokens
         if 'auth_token' in CREDS["steam"] and 'steamguard_token' in CREDS["steam"]:
