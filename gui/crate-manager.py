@@ -516,6 +516,8 @@ def op_lang(*args):
 def login(event=None):
     global base_url
     CREDS['LoginType'] = LoginType.get()
+    if not LoginType.get() in CREDS:
+        CREDS[LoginType.get()] = {}
     CREDS[LoginType.get()]['email'] = email.get()
     CREDS[LoginType.get()]['password'] = password.get()
     with open('creds.json','w') as json_file:
