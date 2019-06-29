@@ -516,8 +516,13 @@ def op_lang(*args):
 def login(event=None):
     global base_url
     CREDS['LoginType'] = LoginType.get()
+    # Create LoginType key if it doesn't exist
     if not LoginType.get() in CREDS:
         CREDS[LoginType.get()] = {}
+    # Reset saved tokens if username changes
+    if LoginType.get() == "steam" and 'email' in CREDS['steam']:
+        if not CREDS['steam']['email'] == email.get():
+            CREDS[LoginType.get()] = {}
     CREDS[LoginType.get()]['email'] = email.get()
     CREDS[LoginType.get()]['password'] = password.get()
     with open('creds.json','w') as json_file:
